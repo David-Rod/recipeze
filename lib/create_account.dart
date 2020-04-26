@@ -1,16 +1,15 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'create_account.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
-class LoginPage extends StatefulWidget {
-  LoginPage({Key key, this.title}) : super(key: key);
+class CreateAccount extends StatefulWidget {
+  CreateAccount({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _CreateAccountState createState() => _CreateAccountState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _CreateAccountState extends State<CreateAccount> {
   bool confirmEmail(String value) {
     RegExp emailRegex = new RegExp(
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$',
@@ -49,10 +48,55 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final createAccountButton = Material(
+      elevation: 5.0,
+      borderRadius: BorderRadius.circular(30.0),
+      color: Color(0xff01A0C7),
+      child: MaterialButton(
+        minWidth: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        onPressed: () {
+          Navigator.pop(
+            context,
+          );
+        },
+        child: Text("Create My Account",
+            textAlign: TextAlign.center,
+            style: style.copyWith(
+                color: Colors.white, fontWeight: FontWeight.bold)),
+      ),
+    );
+    final nameField = TextField(
+      controller: emailController,
+      obscureText: false,
+      style: style,
+      textAlign: TextAlign.center,
+      decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
+          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          hintText: "First and Last Name",
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+    );
+    final userNameField = TextField(
+      controller: emailController,
+      obscureText: false,
+      style: style,
+      textAlign: TextAlign.center,
+      decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
+          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          hintText: "User Name",
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+    );
     final emailField = TextField(
       controller: emailController,
       obscureText: false,
       style: style,
+      textAlign: TextAlign.center,
       decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
@@ -65,6 +109,7 @@ class _LoginPageState extends State<LoginPage> {
       controller: passwordController,
       obscureText: true,
       style: style,
+      textAlign: TextAlign.center,
       decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
@@ -72,48 +117,6 @@ class _LoginPageState extends State<LoginPage> {
           hintText: "Password",
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-    );
-    final createAccountButton = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff01A0C7),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => CreateAccount()),
-          );
-        },
-        child: Text("Create My Account",
-            textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
-      ),
-    );
-    final loginButton = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff01A0C7),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {
-          confirmEmail(emailController.text);
-          confirmPassword(passwordController.text);
-          /*
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => <NameOfClassHere>()),
-          );
-           */
-        },
-        child: Text("Login",
-            textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
-      ),
     );
 
     return Scaffold(
@@ -131,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: <Widget>[
                     SizedBox(width: 20.0, height: 100.0),
                     Text(
-                      "RECIPEZE: ",
+                      "ENTER: ",
                       style: TextStyle(
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold,
@@ -142,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                         onTap: () {
                           print("Tap Event");
                         },
-                        text: ["SIMPLE", "FAST", "FUN"],
+                        text: ["FULL NAME", "USER NAME", "EMAIL", "PASSWORD"],
                         textStyle: TextStyle(
                           fontSize: 30.0,
                           fontFamily: "SourceSansPro-Light",
@@ -154,6 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                   ],
                 ),
+                SizedBox(height: 20.0),
                 Expanded(
                   child: SizedBox(
                     height: 100.0,
@@ -165,13 +169,15 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(height: 20.0),
-                createAccountButton,
+                nameField,
+                SizedBox(height: 20.0),
+                userNameField,
                 SizedBox(height: 20.0),
                 emailField,
                 SizedBox(height: 20.0),
                 passwordField,
                 SizedBox(height: 20.0),
-                loginButton,
+                createAccountButton,
                 SizedBox(
                   height: 15.0,
                 ),
