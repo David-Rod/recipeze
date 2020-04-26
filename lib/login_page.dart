@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:recipeze/login_logic.dart';
 import 'create_account.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,36 +12,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool confirmEmail(String value) {
-    RegExp emailRegex = new RegExp(
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$',
-      caseSensitive: false,
-      multiLine: false,
-    );
-    if (emailRegex.hasMatch(value) == true) {
-      print('Email successful');
-      return true;
-    } else {
-      print("Please provide a valid email address.");
-      return false;
-    }
-  }
-
-  bool confirmPassword(String value) {
-    RegExp passwordRegex = new RegExp(
-      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$',
-      caseSensitive: false,
-      multiLine: false,
-    );
-    if (passwordRegex.hasMatch(value) == true) {
-      print('password successful');
-      return true;
-    } else {
-      print(
-          "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number, and one special character.");
-      return false;
-    }
-  }
+  LoginLogic loginLogic = LoginLogic();
 
   TextStyle style =
       TextStyle(fontFamily: 'SourceSansPro-Light', fontSize: 20.0);
@@ -53,6 +25,7 @@ class _LoginPageState extends State<LoginPage> {
       controller: emailController,
       obscureText: false,
       style: style,
+      textAlign: TextAlign.center,
       decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
@@ -65,6 +38,7 @@ class _LoginPageState extends State<LoginPage> {
       controller: passwordController,
       obscureText: true,
       style: style,
+      textAlign: TextAlign.center,
       decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
@@ -100,14 +74,24 @@ class _LoginPageState extends State<LoginPage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          confirmEmail(emailController.text);
-          confirmPassword(passwordController.text);
+          if (loginLogic.validateLoginCredentials(
+                  emailController.text, passwordController.text) ==
+              true) {
+            Navigator.pop(
+              context,
+            );
+          } else {
+            print("Invalid email or password. Please try again.");
+          }
+
+          // TODO: add the name of the class (main page) that this will
+          // navigate to
           /*
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => <NameOfClassHere>()),
           );
-           */
+          */
         },
         child: Text("Login",
             textAlign: TextAlign.center,
@@ -117,6 +101,7 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Container(
           color: Colors.lightGreen,
@@ -159,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 100.0,
                     width: 100.0,
                     child: Image.asset(
-                      'images/icon.png',
+                      'images/chef_hat_cookbook.png',
                       fit: BoxFit.contain,
                     ),
                   ),

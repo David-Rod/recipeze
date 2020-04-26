@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:recipeze/login_logic.dart';
 
 class CreateAccount extends StatefulWidget {
   CreateAccount({Key key, this.title}) : super(key: key);
@@ -10,41 +11,14 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
-  bool confirmEmail(String value) {
-    RegExp emailRegex = new RegExp(
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$',
-      caseSensitive: false,
-      multiLine: false,
-    );
-    if (emailRegex.hasMatch(value) == true) {
-      print('Email successful');
-      return true;
-    } else {
-      print("Please provide a valid email address.");
-      return false;
-    }
-  }
-
-  bool confirmPassword(String value) {
-    RegExp passwordRegex = new RegExp(
-      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$',
-      caseSensitive: false,
-      multiLine: false,
-    );
-    if (passwordRegex.hasMatch(value) == true) {
-      print('password successful');
-      return true;
-    } else {
-      print(
-          "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number, and one special character.");
-      return false;
-    }
-  }
+  LoginLogic loginLogic = LoginLogic();
 
   TextStyle style =
       TextStyle(fontFamily: 'SourceSansPro-Light', fontSize: 20.0);
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
+  TextEditingController nameController = new TextEditingController();
+  TextEditingController userNameController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,9 +30,15 @@ class _CreateAccountState extends State<CreateAccount> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          Navigator.pop(
-            context,
-          );
+          if (loginLogic.validateLoginCredentials(
+                  emailController.text, passwordController.text) ==
+              true) {
+            Navigator.pop(
+              context,
+            );
+          } else {
+            print("Invalid email or password. Please try again.");
+          }
         },
         child: Text("Create My Account",
             textAlign: TextAlign.center,
@@ -67,7 +47,7 @@ class _CreateAccountState extends State<CreateAccount> {
       ),
     );
     final nameField = TextField(
-      controller: emailController,
+      controller: nameController,
       obscureText: false,
       style: style,
       textAlign: TextAlign.center,
@@ -80,7 +60,7 @@ class _CreateAccountState extends State<CreateAccount> {
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
     final userNameField = TextField(
-      controller: emailController,
+      controller: userNameController,
       obscureText: false,
       style: style,
       textAlign: TextAlign.center,
@@ -120,6 +100,7 @@ class _CreateAccountState extends State<CreateAccount> {
     );
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Container(
           color: Colors.lightGreen,
@@ -163,7 +144,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     height: 100.0,
                     width: 100.0,
                     child: Image.asset(
-                      'images/icon.png',
+                      'images/brown_cookbook.png',
                       fit: BoxFit.contain,
                     ),
                   ),
