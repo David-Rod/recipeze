@@ -21,7 +21,7 @@ class MealDetailScreen extends StatelessWidget {
       ),
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(10),
-      height: 200,
+      height: 150,
       width: 500,
       child: child,
     );
@@ -36,7 +36,7 @@ class MealDetailScreen extends StatelessWidget {
       ),
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(10),
-      height: 600,
+      height: 400,
       width: 500,
       child: child,
     );
@@ -62,7 +62,11 @@ class MealDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Recipe Name 2'),
+        title: Text('Chiken Boi Recipe'),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () => { }),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.mode_edit), onPressed: () => { }),
+        ],
       ),
 
       body: SingleChildScrollView(
@@ -99,6 +103,9 @@ class MealDetailScreen extends StatelessWidget {
                   ListTile(
                     leading: CircleAvatar(child: Text('# ${(index + 1)}'),),
                   title: Text('First you eat everything'),
+                    //meal.step[index]
+
+
                   ),
                   Divider()
                 ],
