@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
+import 'recipe_info_page.dart';
 
 void main() => runApp(Recipeze());
 
@@ -20,7 +21,13 @@ class Recipeze extends StatelessWidget {
           color: Colors.white,
         )),
       ),
-      home: LoginPage(title: 'Recipeze Login'),
+      ////home: LoginPage(title: 'Recipeze Login'),
+      initialRoute: 'recipe_info_page',
+      routes:
+      {
+        'login_page': (context) => LoginPage(),
+        'recipe_info_page': (context) => MealDetailScreen(),
+      },
     );
   }
 }
