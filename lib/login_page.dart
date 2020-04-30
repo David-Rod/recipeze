@@ -1,7 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:recipeze/login_logic.dart';
+import 'package:recipeze/recipe_info_page.dart';
 import 'create_account.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
@@ -13,6 +15,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   LoginLogic loginLogic = LoginLogic();
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
 
   TextStyle style =
       TextStyle(fontFamily: 'SourceSansPro-Light', fontSize: 20.0);
@@ -26,6 +31,9 @@ class _LoginPageState extends State<LoginPage> {
       obscureText: false,
       style: style,
       textAlign: TextAlign.center,
+      onChanged: (value){
+        email = value;
+      },
       decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
@@ -39,6 +47,9 @@ class _LoginPageState extends State<LoginPage> {
       obscureText: true,
       style: style,
       textAlign: TextAlign.center,
+      onChanged: (value){
+         password= value;
+      },
       decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
@@ -69,12 +80,25 @@ class _LoginPageState extends State<LoginPage> {
     final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff01A0C7),
+      color:  Color(0xff01A0C7),
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {
-          if (loginLogic.validateLoginCredentials(
+        onPressed: () async{
+          try {
+            final user = await _auth.signInWithEmailAndPassword(
+                email: email, password: password);
+            if (user != null) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MealDetailScreen()), //once the main page is added, need to change the route to main page
+              );
+            }
+          }
+          catch(e){
+            print(e);
+          }
+          /*if (loginLogic.validateLoginCredentials(
                   emailController.text, passwordController.text) ==
               true) {
             Navigator.pop(
@@ -83,14 +107,15 @@ class _LoginPageState extends State<LoginPage> {
           } else {
             print("Invalid email or password. Please try again.");
           }
-
+*/
           // TODO: add the name of the class (main page) that this will
-          // navigate to
+          // 1) once the main page is added, need to change the route to main page
           /*
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => <NameOfClassHere>()),
           );
+
           */
         },
         child: Text("Login",

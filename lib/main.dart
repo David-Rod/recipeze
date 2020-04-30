@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'recipe_info_page.dart';
+import 'package:recipeze/create_account.dart';
 
 void main() => runApp(Recipeze());
 
@@ -22,10 +23,11 @@ class Recipeze extends StatelessWidget {
         )),
       ),
       ////home: LoginPage(title: 'Recipeze Login'),
-      initialRoute: 'recipe_info_page',
+      initialRoute: 'login_page',
       routes:
       {
         'login_page': (context) => LoginPage(),
+        'create_account': (context) => CreateAccount(),
         'recipe_info_page': (context) => MealDetailScreen(),
       },
     );

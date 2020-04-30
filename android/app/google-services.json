@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "169881532594",
+    "firebase_url": "https://recipeze-44f2b.firebaseio.com",
+    "project_id": "recipeze-44f2b",
+    "storage_bucket": "recipeze-44f2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169881532594:android:0265bf8559cefd7b8231ab",
+        "android_client_info": {
+          "package_name": "com.davidr.recipeze"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "169881532594-3u6rhavackakh1889oecnnf1tp2j7r0m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5IHwpwKdSIq1X4PfvQ_YOMCRv_aUGHF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "169881532594-3u6rhavackakh1889oecnnf1tp2j7r0m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
