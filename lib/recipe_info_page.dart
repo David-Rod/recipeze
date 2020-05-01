@@ -90,8 +90,12 @@ class MealDetailScreen extends StatelessWidget {
                       vertical: 5,
                       horizontal: 5,
                     ),
-                    child: Text("TEST")),
+                  child: Text("Maybe you add something here",
+                      style: TextStyle(color: Colors.black),
+                      textDirection: TextDirection.ltr)),
               ),
+
+              //itemCount: selectedMeal.ingredients.length
               itemCount: 10,
             ),
           ),
@@ -110,6 +114,7 @@ class MealDetailScreen extends StatelessWidget {
                   Divider()
                 ],
               ),
+              itemCount: 10,
               //itemCount: selectedMeal.steps.length,
             ),
           ),
