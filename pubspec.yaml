@@ -34,6 +34,7 @@ flutter:
    - images/icon.png
    - images/brown_cookbook.png
    - images/chef_hat_cookbook.png
+   - images/search.png
 
   fonts:
     - family: Bebas Neue
