@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MealDetailScreen extends StatelessWidget {
+
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -56,60 +57,65 @@ class MealDetailScreen extends StatelessWidget {
     );
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Chiken Boi Recipe'),
-          leading:
-              IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () => {}),
-          actions: <Widget>[
-            IconButton(icon: Icon(Icons.mode_edit), onPressed: () => {}),
-          ],
-        ),
-        body: SingleChildScrollView(
-            child: Column(
-          children: <Widget>[
-            Container(
-                height: 300,
-                width: double.infinity,
-                child: Image.network(
-                  'https://gbc-cdn-public-media.azureedge.net/img83669.768x512.jpg',
-                )),
-            buildSectionTitle(context, 'Preparation'),
-            buildContainerPrep(
-              ListView.builder(
-                itemBuilder: (ctx, index) => Card(
-                  color: Colors.white,
-                  child: Padding(
+      appBar: AppBar(
+        title: Text('Chiken Boi Recipe'),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () => { }),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.mode_edit), onPressed: () => { }),
+        ],
+      ),
+
+      body: SingleChildScrollView(
+       child: Column(
+        children: <Widget>[
+          Container(
+            height: 300,
+            width: double.infinity,
+            child: Image.network(
+              'https://gbc-cdn-public-media.azureedge.net/img83669.768x512.jpg',
+            )
+          ),
+
+          buildSectionTitle(context, 'Preparation'),
+          buildContainerPrep(
+            ListView.builder(
+              itemBuilder: (ctx, index) => Card(
+                color: Colors.white,
+                child: Padding(
                     padding: EdgeInsets.symmetric(
                       vertical: 5,
                       horizontal: 5,
                     ),
+                    child: Text("TEST")),
+              ),
+              itemCount: 10,
+            ),
+          ),
+          buildSectionTitle(context, 'Recipe Steps'),
+          buildContainerSteps(
+            ListView.builder(
+              itemBuilder: (ctx, index) => Column(
+                children: [
+                  ListTile(
+                    leading: CircleAvatar(child: Text('# ${(index + 1)}'),),
+                  title: Text('First you eat everything'),
+                    //meal.step[index]
+
+
                   ),
-                ),
-                //itemCount: selectedMeal.ingredients.length,
+                  Divider()
+                ],
               ),
+              //itemCount: selectedMeal.steps.length,
             ),
-            buildSectionTitle(context, 'Recipe Steps'),
-            buildContainerSteps(
-              ListView.builder(
-                itemBuilder: (ctx, index) => Column(
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        child: Text('# ${(index + 1)}'),
-                      ),
-                      title: Text('First you eat everything'),
-                      //meal.step[index]
-                    ),
-                    Divider()
-                  ],
-                ),
-                //itemCount: selectedMeal.steps.length,
-              ),
-            ),
-          ],
-        )));
+          ),
+        ],
+       )
+      )
+    );
   }
 }
