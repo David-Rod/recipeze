@@ -275,6 +275,41 @@ class Page2 extends StatelessWidget {
                 ),
               ),
 
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Text(
+                  "",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Our Professor",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Dariush Navabi",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+
+
+
+
             ],
           ),
         )
