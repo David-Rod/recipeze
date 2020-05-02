@@ -90,56 +90,140 @@ class Recipe {
         'https://images.media-allrecipes.com/userphotos/720x405/5079227.jpg',
         10,
         15,
-        4,
-        null,
-        null),
+        4, <String>[
+      "prepare spice mix using salt, sugar, and tears",
+      "fetch string for tying of the chicken",
+      "set aside a bowl of rice",
+      "add chicken flavoring and garlic salt into rice bowl"
+          "let chickem soak in rub for one day"
+    ], <String>[
+      "once chicken has soaked in rub, take it out of the fridge and give it a lil smooch",
+      "pre heat the oven to 350F",
+      "as the oven preheats prepare rice pot with two cups of water and a splash of olive oil"
+          "bring the water to a bowl and then add rice mix to the water",
+      "after 10 minutes, lid the rice and put the heat on low. let simmer until coooked",
+      "once oven is ready, place chicken in oven and let cook for 30 minutes"
+          "to serve place rice on dish and then place chicken on rice. Enjoy!"
+    ]),
     Recipe(
         "Mangoyada",
         'https://tucsonfoodie.com/wp-content/uploads/2016/06/Sonoran-Sno-Cones.jpg',
         10,
         3,
-        1,
-        null,
-        null),
+        1, <String>[
+      "prepare spice mix using salt, sugar, and tears",
+      "fetch string for tying of the chicken",
+      "set aside a bowl of rice",
+      "add chicken flavoring and garlic salt into rice bowl"
+          "let chickem soak in rub for one day"
+    ], <String>[
+      "once chicken has soaked in rub, take it out of the fridge and give it a lil smooch",
+      "pre heat the oven to 350F",
+      "as the oven preheats prepare rice pot with two cups of water and a splash of olive oil"
+          "bring the water to a bowl and then add rice mix to the water",
+      "after 10 minutes, lid the rice and put the heat on low. let simmer until coooked",
+      "once oven is ready, place chicken in oven and let cook for 30 minutes"
+          "to serve place rice on dish and then place chicken on rice. Enjoy!"
+    ]),
     Recipe(
         "Dragon Roll Sushi",
         'https://www.justonecookbook.com/wp-content/uploads/2016/04/Dragon-Roll-New-500x400.jpg',
         25,
         30,
-        4,
-        null,
-        null),
+        4, <String>[
+      "prepare spice mix using salt, sugar, and tears",
+      "fetch string for tying of the chicken",
+      "set aside a bowl of rice",
+      "add chicken flavoring and garlic salt into rice bowl"
+          "let chickem soak in rub for one day"
+    ], <String>[
+      "once chicken has soaked in rub, take it out of the fridge and give it a lil smooch",
+      "pre heat the oven to 350F",
+      "as the oven preheats prepare rice pot with two cups of water and a splash of olive oil"
+          "bring the water to a bowl and then add rice mix to the water",
+      "after 10 minutes, lid the rice and put the heat on low. let simmer until coooked",
+      "once oven is ready, place chicken in oven and let cook for 30 minutes"
+          "to serve place rice on dish and then place chicken on rice. Enjoy!"
+    ]),
     Recipe(
         "Rotisserie Chicken",
         'https://gbc-cdn-public-media.azureedge.net/img83669.768x512.jpg',
         10,
         12,
-        3,
-        null,
-        null),
+        3, <String>[
+      "prepare spice mix using salt, sugar, and tears",
+      "fetch string for tying of the chicken",
+      "set aside a bowl of rice",
+      "add chicken flavoring and garlic salt into rice bowl"
+          "let chickem soak in rub for one day"
+    ], <String>[
+      "once chicken has soaked in rub, take it out of the fridge and give it a lil smooch",
+      "pre heat the oven to 350F",
+      "as the oven preheats prepare rice pot with two cups of water and a splash of olive oil"
+          "bring the water to a bowl and then add rice mix to the water",
+      "after 10 minutes, lid the rice and put the heat on low. let simmer until coooked",
+      "once oven is ready, place chicken in oven and let cook for 30 minutes"
+          "to serve place rice on dish and then place chicken on rice. Enjoy!"
+    ]),
     Recipe(
         "Fluffy Pancakes",
         'https://images.media-allrecipes.com/userphotos/720x405/5079227.jpg',
         10,
         15,
-        4,
-        null,
-        null),
+        4, <String>[
+      "prepare spice mix using salt, sugar, and tears",
+      "fetch string for tying of the chicken",
+      "set aside a bowl of rice",
+      "add chicken flavoring and garlic salt into rice bowl"
+          "let chickem soak in rub for one day"
+    ], <String>[
+      "once chicken has soaked in rub, take it out of the fridge and give it a lil smooch",
+      "pre heat the oven to 350F",
+      "as the oven preheats prepare rice pot with two cups of water and a splash of olive oil"
+          "bring the water to a bowl and then add rice mix to the water",
+      "after 10 minutes, lid the rice and put the heat on low. let simmer until coooked",
+      "once oven is ready, place chicken in oven and let cook for 30 minutes"
+          "to serve place rice on dish and then place chicken on rice. Enjoy!"
+    ]),
     Recipe(
         "Mangoyada",
         'https://tucsonfoodie.com/wp-content/uploads/2016/06/Sonoran-Sno-Cones.jpg',
         10,
         3,
-        1,
-        null,
-        null),
+        1, <String>[
+      "prepare spice mix using salt, sugar, and tears",
+      "fetch string for tying of the chicken",
+      "set aside a bowl of rice",
+      "add chicken flavoring and garlic salt into rice bowl"
+          "let chickem soak in rub for one day"
+    ], <String>[
+      "once chicken has soaked in rub, take it out of the fridge and give it a lil smooch",
+      "pre heat the oven to 350F",
+      "as the oven preheats prepare rice pot with two cups of water and a splash of olive oil"
+          "bring the water to a bowl and then add rice mix to the water",
+      "after 10 minutes, lid the rice and put the heat on low. let simmer until coooked",
+      "once oven is ready, place chicken in oven and let cook for 30 minutes"
+          "to serve place rice on dish and then place chicken on rice. Enjoy!"
+    ]),
     Recipe(
         "Dragon Roll Sushi",
         'https://www.justonecookbook.com/wp-content/uploads/2016/04/Dragon-Roll-New-500x400.jpg',
         25,
         30,
-        4,
-        null,
-        null),
+        4, <String>[
+      "prepare spice mix using salt, sugar, and tears",
+      "fetch string for tying of the chicken",
+      "set aside a bowl of rice",
+      "add chicken flavoring and garlic salt into rice bowl"
+          "let chickem soak in rub for one day"
+    ], <String>[
+      "once chicken has soaked in rub, take it out of the fridge and give it a lil smooch",
+      "pre heat the oven to 350F",
+      "as the oven preheats prepare rice pot with two cups of water and a splash of olive oil"
+          "bring the water to a bowl and then add rice mix to the water",
+      "after 10 minutes, lid the rice and put the heat on low. let simmer until coooked",
+      "once oven is ready, place chicken in oven and let cook for 30 minutes"
+          "to serve place rice on dish and then place chicken on rice. Enjoy!"
+    ]),
   ];
 }
