@@ -68,6 +68,24 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     return Scaffold(
+        appBar: AppBar(
+          title:                         Text(
+            "CS-499 - ADV. MOBILE APP. DEV ",
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.info), onPressed: () {
+              Navigator.of(context).push(_createRoute());
+            },),
+          ],
+        ),
+
+
+
+
         resizeToAvoidBottomInset: false,
         body: Builder(builder: (context) {
           return Center(
@@ -168,5 +186,98 @@ class _LoginPageState extends State<LoginPage> {
             ),
           );
         }));
+  }
+}
+
+
+
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => Page2(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 1.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+class Page2 extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('TEAM: RECIPEZE'),
+        backgroundColor: Colors.red[600],
+      ),
+
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              //SizedBox(width: 20.0, height: 100.0),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Our Team:",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Ryan Wallace",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "David Rodriguez",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Darius Dumel",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Ronith Aerva",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+        )
+    );
   }
 }

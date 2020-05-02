@@ -23,7 +23,7 @@ class Recipeze extends StatelessWidget {
           )),
         ),
         ////home: LoginPage(title: 'Recipeze Login'),
-        initialRoute: 'main_route_page',
+        initialRoute: 'login_page',
         routes: {
           'login_page': (context) => LoginPage(),
           'recipe_info_page': (context) => MealDetailScreen(),
