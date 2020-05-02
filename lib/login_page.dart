@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:recipeze/login_logic.dart';
+import 'package:recipeze/main_route/main_route.dart';
 import 'create_account.dart';
 
 class LoginPage extends StatefulWidget {
@@ -136,12 +137,11 @@ class _LoginPageState extends State<LoginPage> {
                                     emailController.text,
                                     passwordController.text) ==
                                 true) {
-                              /*
-                                Navigator.push(
+                              Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => <NameOfClassHere>()),
-                                );
-                              */
+                                MaterialPageRoute(
+                                    builder: (context) => MainRoute()),
+                              );
                             } else {
                               SnackBar snackBar = SnackBar(
                                 content: Text(

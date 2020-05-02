@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../recipe.dart';
+import '../recipe_info_page.dart';
 
 class RecipeListView extends StatelessWidget {
   const RecipeListView({
@@ -61,8 +62,14 @@ class RecipeCard extends StatelessWidget {
                 child: InkWell(
                     highlightColor: Colors.black38,
                     splashColor: Colors.black12,
-                    onTap: () => print(
-                        "i appreciate you. -Darius"), //TODO route to recipe info page
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MealDetailScreen(recipe),
+                        ),
+                      );
+                    },
                     onLongPress: null,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),

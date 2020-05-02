@@ -16,12 +16,14 @@ class _MainRouteState extends State<MainRoute> {
       fontSize: 20.0,
       color: Colors.lightGreen);
 
+  final recipes = Recipe.tempRecipes;
+
   TextStyle headerStyle = TextStyle(
       fontFamily: 'SourceSansPro-Light',
       fontSize: 52.0,
       color: Colors.lightGreen);
 
-  Widget TitleText() {
+  Widget titleText() {
     return RichText(
       text: TextSpan(style: headerStyle, children: <TextSpan>[
         TextSpan(text: 'RECIPI'),
@@ -29,9 +31,6 @@ class _MainRouteState extends State<MainRoute> {
       ]),
     );
   }
-
-  //TODO make sure that this is list of recipe objects
-  final recipes = Recipe.tempRecipes;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +44,7 @@ class _MainRouteState extends State<MainRoute> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              TitleText(),
+              titleText(),
               TopNavigation(bodyStyle: bodyStyle),
               RecipeListView(recipes: recipes)
             ],
