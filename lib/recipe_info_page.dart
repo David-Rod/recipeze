@@ -65,8 +65,11 @@ class MealDetailScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(recipe.name),
-          leading:
-              IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () => {}),
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
           actions: <Widget>[
             IconButton(icon: Icon(Icons.mode_edit), onPressed: () => {}),
           ],
