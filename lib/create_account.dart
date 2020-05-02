@@ -28,6 +28,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
   @override
   Widget build(BuildContext context) {
+  
     final createAccountButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
@@ -37,16 +38,7 @@ class _CreateAccountState extends State<CreateAccount> {
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () async{
 
-          // when using the try and catch the below code is not required.(Validation)
-          /*if (loginLogic.validateLoginCredentials(
-              emailController.text, passwordController.text) ==
-              true) {
-            Navigator.pop(
-              context,
-            );
-          } else {
-            print("Invalid email or password. Please try again.");
-          } */
+          
 
           try {
             final newUser = await _auth.createUserWithEmailAndPassword(
@@ -126,73 +118,110 @@ class _CreateAccountState extends State<CreateAccount> {
     );
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Center(
-        child: Container(
-          color: Colors.lightGreen,
-          child: Padding(
-            padding: const EdgeInsets.all(36.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Row(
-                  mainAxisSize: MainAxisSize.min,
+        resizeToAvoidBottomInset: false,
+        body: Builder(builder: (context) {
+          return Center(
+            child: Container(
+              color: Colors.lightGreen,
+              child: Padding(
+                padding: const EdgeInsets.all(36.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    SizedBox(width: 20.0, height: 100.0),
-                    Text(
-                      "ENTER: ",
-                      style: TextStyle(
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        SizedBox(width: 20.0, height: 100.0),
+                        Text(
+                          "ENTER: ",
+                          style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(width: 20.0, height: 100.0),
+                        RotateAnimatedTextKit(
+                            onTap: () {
+                              print("Tap Event");
+                            },
+                            text: [
+                              "FULL NAME",
+                              "USER NAME",
+                              "EMAIL",
+                              "PASSWORD"
+                            ],
+                            textStyle: TextStyle(
+                              fontSize: 30.0,
+                              fontFamily: "SourceSansPro-Light",
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.start,
+                            alignment: AlignmentDirectional
+                                .topStart // or Alignment.topLeft
+                            ),
+                      ],
+                    ),
+                    SizedBox(height: 20.0),
+                    Expanded(
+                      child: SizedBox(
+                        height: 100.0,
+                        width: 100.0,
+                        child: Image.asset(
+                          'images/brown_cookbook.png',
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                    SizedBox(width: 20.0, height: 100.0),
-                    RotateAnimatedTextKit(
-                        onTap: () {
-                          print("Tap Event");
-                        },
-                        text: ["FULL NAME", "USER NAME", "EMAIL", "PASSWORD"],
-                        textStyle: TextStyle(
-                          fontSize: 30.0,
-                          fontFamily: "SourceSansPro-Light",
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.start,
-                        alignment: AlignmentDirectional
-                            .topStart // or Alignment.topLeft
+                    SizedBox(height: 20.0),
+                    nameField,
+                    SizedBox(height: 20.0),
+                    userNameField,
+                    SizedBox(height: 20.0),
+                    emailField,
+                    SizedBox(height: 20.0),
+                    passwordField,
+                    SizedBox(height: 20.0),
+                    Material(
+                        color: Color(0xff01A0C7),
+                        elevation: 5.0,
+                        borderRadius: BorderRadius.circular(30.0),
+                        child: MaterialButton(
+                          minWidth: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                          onPressed: () {
+                            if (loginLogic.validateLoginCredentials(
+                                    emailController.text,
+                                    passwordController.text) ==
+                                true) {
+                              Navigator.pop(
+                                context,
+                              );
+                            } else {
+                              SnackBar snackBar = SnackBar(
+                                content: Text(
+                                  'Invalid email or password.\nMinimum eight '
+                                  'characters, at least one uppercase letter, one lowercase letter and one number.',
+                                  textAlign: TextAlign.center,
+                                ),
+                              );
+                              Scaffold.of(context).showSnackBar(snackBar);
+                            }
+                          },
+                          child: Text("Create Account",
+                              textAlign: TextAlign.center,
+                              style: style.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        )),
+                    SizedBox(
+                      height: 15.0,
                     ),
                   ],
                 ),
-                SizedBox(height: 20.0),
-                Expanded(
-                  child: SizedBox(
-                    height: 100.0,
-                    width: 100.0,
-                    child: Image.asset(
-                      'images/brown_cookbook.png',
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20.0),
-                nameField,
-                SizedBox(height: 20.0),
-                userNameField,
-                SizedBox(height: 20.0),
-                emailField,
-                SizedBox(height: 20.0),
-                passwordField,
-                SizedBox(height: 20.0),
-                createAccountButton,
-                SizedBox(
-                  height: 15.0,
-                ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
+        }));
   }
 }

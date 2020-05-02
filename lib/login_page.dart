@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:recipeze/login_logic.dart';
 import 'package:recipeze/recipe_info_page.dart';
+import 'package:recipeze/main_route/main_route.dart';
 import 'create_account.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -77,119 +78,246 @@ class _LoginPageState extends State<LoginPage> {
                 color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
-    final loginButton = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color:  Color(0xff01A0C7),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () async{
-          try {
+
+
+    return Scaffold(
+        appBar: AppBar(
+          title:                         Text(
+            "CS-499 - ADV. MOBILE APP. DEV ",
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.info), onPressed: () {
+              Navigator.of(context).push(_createRoute());
+            },),
+          ],
+        ),
+
+
+
+
+        resizeToAvoidBottomInset: false,
+        body: Builder(builder: (context) {
+          return Center(
+            child: Container(
+              color: Colors.lightGreen,
+              child: Padding(
+                padding: const EdgeInsets.all(36.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        SizedBox(width: 20.0, height: 100.0),
+                        Text(
+                          "RECIPEZE: ",
+                          style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(width: 20.0, height: 100.0),
+                        RotateAnimatedTextKit(
+                            onTap: () {
+                              print("Tap Event");
+                            },
+                            text: ["SIMPLE", "FAST", "FUN"],
+                            textStyle: TextStyle(
+                              fontSize: 30.0,
+                              fontFamily: "SourceSansPro-Light",
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.start,
+                            alignment: AlignmentDirectional
+                                .topStart // or Alignment.topLeft
+                            ),
+                      ],
+                    ),
+                    Expanded(
+                      child: SizedBox(
+                        height: 100.0,
+                        width: 100.0,
+                        child: Image.asset(
+                          'images/chef_hat_cookbook.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    createAccountButton,
+                    SizedBox(height: 20.0),
+                    emailField,
+                    SizedBox(height: 20.0),
+                    passwordField,
+                    SizedBox(height: 20.0),
+                    Material(
+                        color: Color(0xff01A0C7),
+                        elevation: 5.0,
+                        borderRadius: BorderRadius.circular(30.0),
+                        child: MaterialButton(
+                          minWidth: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                          onPressed: () async{
+                            try {
             final user = await _auth.signInWithEmailAndPassword(
                 email: email, password: password);
             if (user != null) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MealDetailScreen()), //once the main page is added, need to change the route to main page
+                MaterialPageRoute(builder: (context) => MainRoute()), //once the main page is added, need to change the route to main page
               );
             }
           }
           catch(e){
             print(e);
-          }
-          /*if (loginLogic.validateLoginCredentials(
-                  emailController.text, passwordController.text) ==
-              true) {
-            Navigator.pop(
-              context,
-            );
-          } else {
-            print("Invalid email or password. Please try again.");
-          }
-*/
-          // TODO: add the name of the class (main page) that this will
-          // 1) once the main page is added, need to change the route to main page
-          /*
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => <NameOfClassHere>()),
-          );
-
-          */
-        },
-        child: Text("Login",
-            textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
-      ),
-    );
-
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Center(
-        child: Container(
-          color: Colors.lightGreen,
-          child: Padding(
-            padding: const EdgeInsets.all(36.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    SizedBox(width: 20.0, height: 100.0),
-                    Text(
-                      "RECIPEZE: ",
-                      style: TextStyle(
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+          
+                          child: Text("Login",
+                              textAlign: TextAlign.center,
+                              style: style.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        )),
+                    SizedBox(
+                      height: 15.0,
                     ),
-                    SizedBox(width: 20.0, height: 100.0),
-                    RotateAnimatedTextKit(
-                        onTap: () {
-                          print("Tap Event");
-                        },
-                        text: ["SIMPLE", "FAST", "FUN"],
-                        textStyle: TextStyle(
-                          fontSize: 30.0,
-                          fontFamily: "SourceSansPro-Light",
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.start,
-                        alignment: AlignmentDirectional
-                            .topStart // or Alignment.topLeft
-                        ),
                   ],
                 ),
-                Expanded(
-                  child: SizedBox(
-                    height: 100.0,
-                    width: 100.0,
-                    child: Image.asset(
-                      'images/chef_hat_cookbook.png',
-                      fit: BoxFit.contain,
-                    ),
+              ),
+            ),
+          );
+        }));
+  }
+}
+
+
+
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => Page2(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 1.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+class Page2 extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('TEAM: RECIPEZE'),
+        backgroundColor: Colors.red[600],
+      ),
+
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              //SizedBox(width: 20.0, height: 100.0),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Our Team:",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 20.0),
-                createAccountButton,
-                SizedBox(height: 20.0),
-                emailField,
-                SizedBox(height: 20.0),
-                passwordField,
-                SizedBox(height: 20.0),
-                loginButton,
-                SizedBox(
-                  height: 15.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Ryan Wallace",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
-              ],
-            ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "David Rodriguez",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Darius Dumel",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Ronith Aerva",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Text(
+                  "",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Our Professor:",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Dariush Navabi",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+
+
+
+
+            ],
           ),
-        ),
-      ),
+        )
     );
   }
 }
