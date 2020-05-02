@@ -91,19 +91,20 @@ class Recipe {
         10,
         15,
         4, <String>[
-      "prepare spice mix using salt, sugar, and tears",
-      "fetch string for tying of the chicken",
-      "set aside a bowl of rice",
-      "add chicken flavoring and garlic salt into rice bowl"
-          "let chickem soak in rub for one day"
+      'Pancake Mix (4oz)',
+      '1 Tablespoon of Olive Oil',
+      '1 Tps of Butter',
+      '3 Pinches of Salt',
+      'Mmaple syrup',
+      'Cheese (optional)'
     ], <String>[
-      "once chicken has soaked in rub, take it out of the fridge and give it a lil smooch",
-      "pre heat the oven to 350F",
-      "as the oven preheats prepare rice pot with two cups of water and a splash of olive oil"
-          "bring the water to a bowl and then add rice mix to the water",
-      "after 10 minutes, lid the rice and put the heat on low. let simmer until coooked",
-      "once oven is ready, place chicken in oven and let cook for 30 minutes"
-          "to serve place rice on dish and then place chicken on rice. Enjoy!"
+      'Cut the tomatoes and the onion into small pieces.',
+      'Boil some water - add salt to it once it boils.',
+      'Put the spaghetti into the boiling water - they should be done in about 10 to 12 minutes.',
+      'In the meantime, heaten up some olive oil and add the cut onion.',
+      'After 2 minutes, add the tomato pieces, salt, pepper and your other spices.',
+      'The sauce will be done once the spaghetti are.',
+      'Feel free to add some cheese on top of the finished dish.'
     ]),
     Recipe(
         "Mangoyada",
@@ -111,19 +112,15 @@ class Recipe {
         10,
         3,
         1, <String>[
-      "prepare spice mix using salt, sugar, and tears",
-      "fetch string for tying of the chicken",
-      "set aside a bowl of rice",
-      "add chicken flavoring and garlic salt into rice bowl"
-          "let chickem soak in rub for one day"
+      '1 Cup of Water',
+      '1 Slice of Watermellon',
+      '1 Slice Pineapple',
+      '1-2 Slices of Cheese',
+      'Butter'
     ], <String>[
-      "once chicken has soaked in rub, take it out of the fridge and give it a lil smooch",
-      "pre heat the oven to 350F",
-      "as the oven preheats prepare rice pot with two cups of water and a splash of olive oil"
-          "bring the water to a bowl and then add rice mix to the water",
-      "after 10 minutes, lid the rice and put the heat on low. let simmer until coooked",
-      "once oven is ready, place chicken in oven and let cook for 30 minutes"
-          "to serve place rice on dish and then place chicken on rice. Enjoy!"
+      'Butter one side of the white bread',
+      'Layer ham, the pineapple and cheese on the white bread',
+      'Bake the toast for round about 10 minutes in the oven at 200°C'
     ]),
     Recipe(
         "Dragon Roll Sushi",
@@ -211,19 +208,18 @@ class Recipe {
         25,
         30,
         4, <String>[
-      "prepare spice mix using salt, sugar, and tears",
-      "fetch string for tying of the chicken",
-      "set aside a bowl of rice",
-      "add chicken flavoring and garlic salt into rice bowl"
-          "let chickem soak in rub for one day"
+      '300g Cattle Hack',
+      '1 Tomato',
+      '1 Cucumber',
+      '1 Onion',
+      'Ketchup',
+      '2 Burger Buns'
     ], <String>[
-      "once chicken has soaked in rub, take it out of the fridge and give it a lil smooch",
-      "pre heat the oven to 350F",
-      "as the oven preheats prepare rice pot with two cups of water and a splash of olive oil"
-          "bring the water to a bowl and then add rice mix to the water",
-      "after 10 minutes, lid the rice and put the heat on low. let simmer until coooked",
-      "once oven is ready, place chicken in oven and let cook for 30 minutes"
-          "to serve place rice on dish and then place chicken on rice. Enjoy!"
+      'Form 2 patties',
+      'Fry the patties for c. 4 minutes on each side',
+      'Quickly fry the buns for c. 1 minute on each side',
+      'Bruch buns with ketchup',
+      'Serve burger with tomato, cucumber and onion'
     ]),
   ];
 }
