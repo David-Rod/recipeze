@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipeze/main_route/main_route.dart';
 import 'login_page.dart';
+import 'recipe_info_page.dart';
+import 'package:recipeze/create_account.dart';
 
 void main() => runApp(Recipeze());
 
@@ -9,6 +11,7 @@ class Recipeze extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
         title: 'Recipeze',
         theme: ThemeData(
           //Can use .copyWith() to copy a set of custom accents and colors to a theme

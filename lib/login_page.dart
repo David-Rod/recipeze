@@ -1,8 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:recipeze/login_logic.dart';
+import 'package:recipeze/recipe_info_page.dart';
 import 'package:recipeze/main_route/main_route.dart';
 import 'create_account.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
@@ -14,6 +16,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   LoginLogic loginLogic = LoginLogic();
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
 
   TextStyle style =
       TextStyle(fontFamily: 'SourceSansPro-Light', fontSize: 20.0);
@@ -27,6 +32,9 @@ class _LoginPageState extends State<LoginPage> {
       obscureText: false,
       style: style,
       textAlign: TextAlign.center,
+      onChanged: (value){
+        email = value;
+      },
       decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
@@ -40,6 +48,9 @@ class _LoginPageState extends State<LoginPage> {
       obscureText: true,
       style: style,
       textAlign: TextAlign.center,
+      onChanged: (value){
+         password= value;
+      },
       decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
@@ -67,6 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                 color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
+
 
     return Scaffold(
         appBar: AppBar(
@@ -150,27 +162,20 @@ class _LoginPageState extends State<LoginPage> {
                         child: MaterialButton(
                           minWidth: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                          onPressed: () {
-                            if (loginLogic.validateLoginCredentials(
-                                    emailController.text,
-                                    passwordController.text) ==
-                                true) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MainRoute()),
-                              );
-                            } else {
-                              SnackBar snackBar = SnackBar(
-                                content: Text(
-                                  'Invalid email or password.\nMinimum eight '
-                                  'characters, at least one uppercase letter, one lowercase letter and one number.',
-                                  textAlign: TextAlign.center,
-                                ),
-                              );
-                              Scaffold.of(context).showSnackBar(snackBar);
-                            }
-                          },
+                          onPressed: () async{
+                            try {
+            final user = await _auth.signInWithEmailAndPassword(
+                email: email, password: password);
+            if (user != null) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainRoute()), //once the main page is added, need to change the route to main page
+              );
+            }
+          }
+          catch(e){
+            print(e);
+          
                           child: Text("Login",
                               textAlign: TextAlign.center,
                               style: style.copyWith(

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:recipeze/login_logic.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:recipeze/login_page.dart';
+
 
 class CreateAccount extends StatefulWidget {
   CreateAccount({Key key, this.title}) : super(key: key);
@@ -12,9 +15,12 @@ class CreateAccount extends StatefulWidget {
 
 class _CreateAccountState extends State<CreateAccount> {
   LoginLogic loginLogic = LoginLogic();
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
 
   TextStyle style =
-      TextStyle(fontFamily: 'SourceSansPro-Light', fontSize: 20.0);
+  TextStyle(fontFamily: 'SourceSansPro-Light', fontSize: 20.0);
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
   TextEditingController nameController = new TextEditingController();
@@ -22,6 +28,35 @@ class _CreateAccountState extends State<CreateAccount> {
 
   @override
   Widget build(BuildContext context) {
+  
+    final createAccountButton = Material(
+      elevation: 5.0,
+      borderRadius: BorderRadius.circular(30.0),
+      color: Color(0xff01A0C7),
+      child: MaterialButton(
+        minWidth: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        onPressed: () async{
+
+          
+
+          try {
+            final newUser = await _auth.createUserWithEmailAndPassword(
+                email: email, password: password);
+            if(newUser != null){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
+            }
+          }
+          catch(e){
+            print(e);
+          }
+        },
+        child: Text("Create My Account",
+            textAlign: TextAlign.center,
+            style: style.copyWith(
+                color: Colors.white, fontWeight: FontWeight.bold)),
+      ),
+    );
     final nameField = TextField(
       controller: nameController,
       obscureText: false,
@@ -33,7 +68,7 @@ class _CreateAccountState extends State<CreateAccount> {
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "First and Last Name",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+          OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
     final userNameField = TextField(
       controller: userNameController,
@@ -46,33 +81,40 @@ class _CreateAccountState extends State<CreateAccount> {
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "User Name",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+          OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
     final emailField = TextField(
       controller: emailController,
+      keyboardType: TextInputType.emailAddress,
       obscureText: false,
       style: style,
       textAlign: TextAlign.center,
+      onChanged: (value) {
+         email = value;
+    },
       decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Email",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+          OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
     final passwordField = TextField(
       controller: passwordController,
       obscureText: true,
       style: style,
       textAlign: TextAlign.center,
+      onChanged: (value) {
+        password = value;
+      },
       decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Password",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+          OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
 
     return Scaffold(
